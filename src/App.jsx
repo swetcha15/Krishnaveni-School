@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -13,12 +13,15 @@ import Videos from './components/Videos';
 import Social from './components/Social';
 import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import AdmissionForm from './components/AdmissionForm';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
-      <Header />
-      <Hero />
+      <Header onOpenModal={() => setIsModalOpen(true)} />
+      <Hero onOpenModal={() => setIsModalOpen(true)} />
       <Features />
       <Results />
       <Toppers />
@@ -31,6 +34,7 @@ function App() {
       <Social />
       <Footer />
       <WhatsAppFloat />
+      <AdmissionForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

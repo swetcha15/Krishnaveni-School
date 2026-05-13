@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({ onOpenModal }) => {
   return (
     <header>
       <div className="container nav-container">
@@ -21,7 +21,7 @@ const Header = () => {
           <a href="#gallery">Gallery</a>
           <a href="#contact">Contact</a>
         </nav>
-        <button className="btn btn-primary">Apply Now</button>
+        <button className="btn btn-primary" onClick={onOpenModal}>Apply Now</button>
       </div>
     </header>
   );

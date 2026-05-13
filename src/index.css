@@ -870,6 +870,108 @@ footer {
   transform: scale(1.1);
 }
 
+/* Modal and Form */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 17, 40, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: var(--bg-white);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--text-dark);
+}
+
+.admission-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-group input, .form-group select {
+  padding: 10px 15px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--primary);
+}
+
+.message-box {
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.message-box.success {
+  background-color: rgba(37, 211, 102, 0.1);
+  color: #1A9E4A;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.message-box.error {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #D32F2F;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .results-grid, .toppers-grid, .social-grid {
