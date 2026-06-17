@@ -18,9 +18,6 @@ const Applications = () => {
       .select("*")
       .order("id", { ascending: false });
 
-    console.log("DATA:", data);
-    console.log("ERROR:", error);
-
     if (error) {
       console.log(error);
     } else {
@@ -35,9 +32,7 @@ const Applications = () => {
       "Are you sure you want to delete this application?"
     );
 
-    if (!confirmDelete) {
-      return;
-    }
+    if (!confirmDelete) return;
 
     const { error } = await supabase
       .from("admissions")
@@ -49,6 +44,45 @@ const Applications = () => {
     } else {
       fetchApplications();
     }
+  };
+
+  const downloadCSV = () => {
+    const headers = [
+      "First Name",
+      "Last Name",
+      "Email",
+      "Phone",
+      "Grade",
+    ];
+
+    const rows = applications.map((app) => [
+      app.firstname,
+      app.lastname,
+      app.email,
+      app.phoneno,
+      app.grade,
+    ]);
+
+    const csvContent = [headers, ...rows]
+      .map((row) => row.join(","))
+      .join("\n");
+
+    const blob = new Blob(
+      [csvContent],
+      { type: "text/csv" }
+    );
+
+    const url =
+      window.URL.createObjectURL(blob);
+
+    const a =
+      document.createElement("a");
+
+    a.href = url;
+    a.download = "applications.csv";
+    a.click();
+
+    window.URL.revokeObjectURL(url);
   };
 
   if (loading) {
@@ -66,11 +100,28 @@ const Applications = () => {
         <h1>{applications.length}</h1>
       </div>
 
+      <button
+        onClick={downloadCSV}
+        style={{
+          background: "green",
+          color: "white",
+          border: "none",
+          padding: "10px 15px",
+          borderRadius: "6px",
+          marginBottom: "15px",
+          cursor: "pointer",
+        }}
+      >
+        📥 Export CSV
+      </button>
+
       <input
         type="text"
         placeholder="🔍 Search Student..."
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) =>
+          setSearch(e.target.value)
+        }
         className="search-box"
       />
 
@@ -82,6 +133,7 @@ const Applications = () => {
             <th>Email</th>
             <th>Phone</th>
             <th>Grade</th>
+            <th>Date</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -100,6 +152,13 @@ const Applications = () => {
                 <td>{app.email}</td>
                 <td>{app.phoneno}</td>
                 <td>{app.grade}</td>
+
+                <td>
+                  {new Date(
+                    app.created_at
+                  ).toLocaleDateString()}
+                </td>
+
                 <td>
                   <button
                     onClick={() =>
