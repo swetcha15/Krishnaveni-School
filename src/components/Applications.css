@@ -1,0 +1,78 @@
+.applications-container {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.stats-card {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.stats-card h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.stats-card h1 {
+  margin-top: 10px;
+  font-size: 40px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.app-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.app-table th {
+  background: #2563eb;
+  color: white;
+  padding: 15px;
+}
+
+.app-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.app-table tr:hover {
+  background: #f8fafc;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+.home-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  background: #2563eb;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+}
