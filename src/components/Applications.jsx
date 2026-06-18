@@ -84,10 +84,28 @@ const Applications = () => {
 
     window.URL.revokeObjectURL(url);
   };
+  <div className="dashboard-header">
+  <div>
+    <h1>📚 Admissions Dashboard</h1>
+    <p>Manage student applications efficiently</p>
+  </div>
+</div>
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+ const grade5Count = applications.filter(
+  (app) => app.grade === "Grade 5"
+).length;
+
+const grade6Count = applications.filter(
+  (app) => app.grade === "Grade 6"
+).length;
+
+const grade7Count = applications.filter(
+  (app) => app.grade === "Grade 7"
+).length;
+
+if (loading) {
+  return <h2>Loading...</h2>;
+}
 
   return (
     <div className="applications-container">
@@ -95,25 +113,35 @@ const Applications = () => {
         ← Back To Home
       </Link>
 
-      <div className="stats-card">
-        <h2>Total Applications</h2>
-        <h1>{applications.length}</h1>
-      </div>
+     <div className="stats-grid">
+  <div className="stats-card">
+    <h2>Total Applications</h2>
+    <h1>{applications.length}</h1>
+  </div>
 
-      <button
-        onClick={downloadCSV}
-        style={{
-          background: "green",
-          color: "white",
-          border: "none",
-          padding: "10px 15px",
-          borderRadius: "6px",
-          marginBottom: "15px",
-          cursor: "pointer",
-        }}
-      >
-        📥 Export CSV
-      </button>
+  <div className="stats-card">
+    <h2>Grade 5</h2>
+    <h1>{grade5Count}</h1>
+  </div>
+
+  <div className="stats-card">
+    <h2>Grade 6</h2>
+    <h1>{grade6Count}</h1>
+  </div>
+
+  <div className="stats-card">
+    <h2>Grade 7</h2>
+    <h1>{grade7Count}</h1>
+  </div>
+</div>
+  
+
+     <button
+  onClick={downloadCSV}
+  className="export-btn"
+>
+  📥 Export CSV
+</button>
 
       <input
         type="text"

@@ -24,9 +24,9 @@
 
 .search-box {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
   margin-bottom: 20px;
   font-size: 16px;
 }
@@ -39,6 +39,15 @@
   overflow: hidden;
 }
 
+.app-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
 .app-table th {
   background: #2563eb;
   color: white;
@@ -46,7 +55,7 @@
 }
 
 .app-table td {
-  padding: 15px;
+  padding: 14px;
   border-bottom: 1px solid #eee;
 }
 
@@ -75,4 +84,66 @@
   color: white;
   padding: 10px 15px;
   border-radius: 6px;
+}
+.stats-grid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stats-card {
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  padding: 15px 20px;
+  min-width: 180px;
+  flex: 1;
+}
+
+.stats-card h2 {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.stats-card h1 {
+  font-size: 32px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .stats-card {
+    min-width: 100%;
+  }
+}
+
+.dashboard-header {
+  margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 32px;
+}
+
+.dashboard-header p {
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.export-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.export-btn:hover {
+  background: #15803d;
 }
