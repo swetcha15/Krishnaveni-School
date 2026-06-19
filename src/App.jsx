@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import AdmissionForm from "./components/AdmissionForm";
 import Applications from "./components/Applications";
+import AdminLogin from "./components/AdminLogin";
 
 function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,6 +55,10 @@ function App() {
         path="/applications"
         element={<Applications />}
       />
+      <Route
+  path="/admin"
+  element={<AdminLogin />}
+/>
     </Routes>
   );
 }
