@@ -7,6 +7,7 @@ const Applications = () => {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   useEffect(() => {
     fetchApplications();
@@ -188,20 +189,83 @@ if (loading) {
                 </td>
 
                 <td>
-                  <button
-                    onClick={() =>
-                      deleteApplication(app.id)
-                    }
-                    className="delete-btn"
-                  >
-                    Delete
-                  </button>
-                </td>
+  <button
+    onClick={() =>
+      setSelectedStudent(app)
+    }
+    style={{
+      background: "#2563eb",
+      color: "white",
+      border: "none",
+      padding: "6px 12px",
+      borderRadius: "5px",
+      marginRight: "8px",
+      cursor: "pointer",
+    }}
+  >
+    View
+  </button>
+
+  <button
+    onClick={() =>
+      deleteApplication(app.id)
+    }
+    className="delete-btn"
+  >
+    Delete
+  </button>
+</td>
               </tr>
             ))}
         </tbody>
       </table>
+
+{selectedStudent && (
+  <div className="modal-overlay">
+    <div className="modal-box">
+      <h2>Student Details</h2>
+
+      <p>
+        <strong>Name:</strong>{" "}
+        {selectedStudent.firstname}{" "}
+        {selectedStudent.lastname}
+      </p>
+
+      <p>
+        <strong>Email:</strong>{" "}
+        {selectedStudent.email}
+      </p>
+
+      <p>
+        <strong>Phone:</strong>{" "}
+        {selectedStudent.phoneno}
+      </p>
+
+      <p>
+        <strong>Grade:</strong>{" "}
+        {selectedStudent.grade}
+      </p>
+
+      <p>
+        <strong>Applied On:</strong>{" "}
+        {new Date(
+          selectedStudent.created_at
+        ).toLocaleDateString()}
+      </p>
+
+      <button
+        onClick={() =>
+          setSelectedStudent(null)
+        }
+        className="close-btn"
+      >
+        Close
+      </button>
     </div>
+  </div>
+)}
+
+</div>
   );
 };
 
