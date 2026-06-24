@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Applications.css";
 
 const Applications = () => {
@@ -8,7 +8,7 @@ const Applications = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [selectedStudent, setSelectedStudent] = useState(null);
-
+const navigate = useNavigate();
   useEffect(() => {
     fetchApplications();
   }, []);
@@ -103,6 +103,9 @@ const grade6Count = applications.filter(
 const grade7Count = applications.filter(
   (app) => app.grade === "Grade 7"
 ).length;
+const handleLogout = () => {
+  navigate("/admin");
+};
 
 if (loading) {
   return <h2>Loading...</h2>;
@@ -110,9 +113,31 @@ if (loading) {
 
   return (
     <div className="applications-container">
-      <Link to="/" className="home-btn">
-        ← Back To Home
-      </Link>
+     <div
+  style={{
+    display: "flex",
+    gap: "10px",
+    marginBottom: "20px",
+  }}
+>
+  <Link to="/" className="home-btn">
+    ← Back To Home
+  </Link>
+
+  <button
+    onClick={handleLogout}
+    style={{
+      background: "#dc2626",
+      color: "white",
+      border: "none",
+      padding: "10px 15px",
+      borderRadius: "6px",
+      cursor: "pointer",
+    }}
+  >
+    Logout
+  </button>
+</div>
 
      <div className="stats-grid">
   <div className="stats-card">
